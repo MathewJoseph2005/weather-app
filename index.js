@@ -1,8 +1,8 @@
 let wheather ={
     apiKey : "a33001df1c319dd29dbb5895c1b60cfe",
-    getdatalonlat : function (){
+    getdatalonlat : function (city){
         fetch(
-            "http://api.openweathermap.org/geo/1.0/direct?q=kottayam&limit=5&appid=a33001df1c319dd29dbb5895c1b60cfe"
+            "http://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=5&appid=a33001df1c319dd29dbb5895c1b60cfe"
         )
         .then((response) => response.json())
         .then((data) => this.getLanLon(data))
@@ -29,11 +29,17 @@ let wheather ={
         document.querySelector(".hum-per").innerHTML = humidity + "%";
         document.querySelector(".celsius").innerHTML = feels_like;
         document.querySelector(".wind-value").innerHTML = speed+ " km/h";
+    },
+    search: function () {
+        this.getdatalonlat(document.querySelector(".search").value);
     }
 }
 
-document.querySelector(".search-bar a").addEventListener("click",function(){
-    search: function l() {
-        document.querySelector(".search").value
+document.querySelector(".search").addEventListener("click",function(){
+    wheather.search();
+})
+document.querySelector(".search").addEventListener("keyup", function (event){
+    if (event.key == "Enter"){
+        wheather.search();
     }
 })
