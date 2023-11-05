@@ -2,7 +2,7 @@ let wheather ={
     apiKey : "a33001df1c319dd29dbb5895c1b60cfe",
     getdatalonlat : function (){
         fetch(
-            "http://api.openweathermap.org/geo/1.0/direct?q=kochi&limit=5&appid=a33001df1c319dd29dbb5895c1b60cfe"
+            "http://api.openweathermap.org/geo/1.0/direct?q=kottayam&limit=5&appid=a33001df1c319dd29dbb5895c1b60cfe"
         )
         .then((response) => response.json())
         .then((data) => this.getLanLon(data))
@@ -25,6 +25,10 @@ let wheather ={
         const {main} = data.weather[0];
         const {speed} = data.wind;
         console.log(humidity,feels_like,main,name,speed);
+        document.querySelector(".text-1").innerHTML = name;
+        document.querySelector(".hum-per").innerHTML = humidity + "%";
+        document.querySelector(".celsius").innerHTML = feels_like;
+        document.querySelector(".wind-value").innerHTML = speed+ " km/h";
     }
 }
 
