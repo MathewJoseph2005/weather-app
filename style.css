@@ -93,6 +93,9 @@ body{
     top: -33px;
     left: 345px;
 }
+img{
+    width: 30px;
+}
 .text-1{
     color: white;
     position: relative;
