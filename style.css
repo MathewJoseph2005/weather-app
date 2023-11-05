@@ -239,29 +239,30 @@ img{
     left: 90px;
 
 }
-.uv-index{
+.wind-speed{
     font-family: 'Roboto Condensed',sans-serif;
     font-size: 20px;
     font-weight: bold;
     background-color: transparent;
     position: relative;
-    top: -495px;
+    top: -480px;
     left: 90px;
 }
-.uv-per{
+.wind-value{
     font-family: 'Roboto Condensed',sans-serif;
     font-size: 15px;
     font-weight: bold;
     background-color: transparent;
     position: relative;
-    top: -515px;
+    top: -495px;
     left: 90px;
 
 }
-.uv-image{
+.wind-img{
     position: relative;
-    top: -430px;
-    left: 30px;
+    width: 35px ;
+    top: -420px;
+    left: 40px;
 }
 .rectangle-5{
     width: 680px;
@@ -321,5 +322,15 @@ img{
     position: relative;
     top:-777px;
     left: 730px;
+    flex-shrink: 0;
+}
+.weather-2{
+    background-color: rgb(0, 183, 255);
+    border-radius: 12px;
+    width: 200px;
+    height: 290px;
+    position: relative;
+    top:20px;
+    left: 30px;
     flex-shrink: 0;
 }
