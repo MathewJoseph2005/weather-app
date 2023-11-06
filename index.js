@@ -11,20 +11,18 @@ let wheather ={
         const {lat} = data[0];
         const {lon} = data[0];
         this.getWeather(lat,lon);
+        this.getsunrisesunset(lat,lon);
     },
     getWeather : function (lat,lon){
         fetch("https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&exclude=&units=metric&appid=a33001df1c319dd29dbb5895c1b60cfe")
         .then((response) => response.json())
         .then((data) => this.wheather_2(data))
-    }
-    ,
+    },
     wheather_2 : function (data){
-        console.log(data);
         const {humidity,feels_like} = data.main;
         const {name} = data;
         const {main} = data.weather[0];
         const {speed} = data.wind;
-        console.log(humidity,feels_like,main,name,speed);
         document.querySelector(".text-1").innerHTML = name;
         document.querySelector(".hum-per").innerHTML = humidity + "%";
         document.querySelector(".celsius").innerHTML = feels_like;
@@ -32,6 +30,17 @@ let wheather ={
     },
     search: function () {
         this.getdatalonlat(document.querySelector(".search").value);
+    },
+    getsunrisesunset : function(lat,lon){
+        fetch("https://api.sunrisesunset.io/json?lat="+lat+"&lng="+lon+"&timezone=IST")
+        .then((response) => response.json())
+        .then((data) => this.setsunsrisesunset(data))
+    },
+    setsunsrisesunset: function(data){
+        const {sunrise} = data.results;
+        const {sunset} = data.results;
+        document.querySelector(".time-2").innerHTML = sunset;
+        document.querySelector(".time-3").innerHTML = sunrise;
     }
 }
 
