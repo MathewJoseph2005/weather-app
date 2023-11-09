@@ -41,6 +41,9 @@ let wheather ={
         const {sunset} = data.results;
         document.querySelector(".time-2").innerHTML = sunset;
         document.querySelector(".time-3").innerHTML = sunrise;
+        var d = new Date();
+        console.log(d);
+
     }
 }
 
