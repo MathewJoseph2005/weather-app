@@ -44,7 +44,7 @@ let wheather ={
         
     }
 }
-document.querySelector(".search").addEventListener("click",function(){
+document.querySelector(".search-button").addEventListener("click",function(){
     wheather.search();
 })
 document.querySelector(".search").addEventListener("keyup", function (event){
