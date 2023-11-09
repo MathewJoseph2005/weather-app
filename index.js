@@ -41,12 +41,9 @@ let wheather ={
         const {sunset} = data.results;
         document.querySelector(".time-2").innerHTML = sunset;
         document.querySelector(".time-3").innerHTML = sunrise;
-        var d = new Date();
-        console.log(d);
-
+        
     }
 }
-
 document.querySelector(".search").addEventListener("click",function(){
     wheather.search();
 })
@@ -55,3 +52,11 @@ document.querySelector(".search").addEventListener("keyup", function (event){
         wheather.search();
     }
 })
+let d = new Date();
+        let dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        let day = dayNames[d.getDay()];
+        let hour = d.getHours();
+        let min = d.getMinutes();
+        let ampm = hour >= 12?"pm":"am";
+        document.querySelector(".day").innerHTML = day;
+        document.querySelector(".time").innerHTML = hour + ":" + min +" "+ ampm;
