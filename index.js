@@ -76,3 +76,37 @@ let d = new Date();
             img.src = "sun-512.png";
             img.classList.add("weather-image-day");
         }
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+              const latitude = position.coords.latitude;
+              const longitude = position.coords.longitude;
+              getChangeDeg(latitude,longitude)
+              getNowplace(latitude,longitude)
+            });
+          } else {
+            console.log("Geolocation is not supported by this browser.");
+          }
+function getChangeDeg(lat,lon){
+    fetch("https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&exclude=&units=metric&appid=a33001df1c319dd29dbb5895c1b60cfe")
+    .then((response) => response.json())
+    .then((data) => this.changeDeg(data))
+}
+function changeDeg(data){
+        const {humidity,feels_like} = data.main;
+        const {name} = data;
+        const {main} = data.weather[0];
+        const {speed} = data.wind;
+        document.querySelector(".hum-per").innerHTML = humidity + "%";
+        document.querySelector(".celsius").innerHTML = feels_like + '\u00B0';
+        document.querySelector(".wind-value").innerHTML = speed+ " km/h";
+}
+function getNowplace(lat,lon){
+    fetch("https://api.geoapify.com/v1/geocode/reverse?lat="+lat+"&lon="+lon+"&apiKey=0d47df981dc843aaa30cd5fe7adc7f71")
+    .then((response) => response.json())
+    .then((data) => this.nowPlaceName(data))
+}
+function nowPlaceName(data){
+    const {country} = data.features[0].properties;
+    const {city} = data.features[0].properties;
+    document.querySelector(".text-1").innerHTML = city+','+country;
+}
