@@ -12,7 +12,6 @@ let wheather ={
         const {lon} = data[0];
         this.getWeather(lat,lon);
         this.getsunrisesunset(lat,lon);
-        this.getPlaceName(lat,lon)
     },
     getWeather : function (lat,lon){
         fetch("https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&exclude=&units=metric&appid=a33001df1c319dd29dbb5895c1b60cfe")
