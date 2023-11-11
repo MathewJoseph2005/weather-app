@@ -12,6 +12,7 @@ let wheather ={
         const {lon} = data[0];
         this.getWeather(lat,lon);
         this.getsunrisesunset(lat,lon);
+        this.getPlaceName(lat,lon)
     },
     getWeather : function (lat,lon){
         fetch("https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&exclude=&units=metric&appid=a33001df1c319dd29dbb5895c1b60cfe")
@@ -23,8 +24,6 @@ let wheather ={
         const {name} = data;
         const {main} = data.weather[0];
         const {speed} = data.wind;
-
-        document.querySelector(".text-1").innerHTML = name;
         document.querySelector(".hum-per").innerHTML = humidity + "%";
         document.querySelector(".celsius").innerHTML = feels_like + '\u00B0';
         document.querySelector(".wind-value").innerHTML = speed+ " km/h";
@@ -43,7 +42,18 @@ let wheather ={
         document.querySelector(".time-2").innerHTML = sunset.slice(0,4)+ " pm";
         document.querySelector(".time-3").innerHTML = sunrise.slice(0,4) + " am";
         
+    },
+    getPlaceName: function (lat,lon){
+        fetch("https://api.geoapify.com/v1/geocode/reverse?lat="+lat+"&lon="+lon+"&apiKey=0d47df981dc843aaa30cd5fe7adc7f71")
+        .then((response) => response.json())
+        .then((data) => this.placeName(data))
+    },
+    placeName: function(data){
+        const {country} = data.features[0].properties;
+        const {city} = data.features[0].properties;
+        document.querySelector(".text-1").innerHTML = city+','+country;
     }
+
 }
 document.querySelector(".search-button").addEventListener("click",function(){
     wheather.search();
@@ -56,8 +66,7 @@ document.querySelector(".search").addEventListener("keyup", function (event){
 let d = new Date();
         let dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         let day = dayNames[d.getDay()];
-        // let hour = d.getHours();
-        let hour = 10;
+         let hour = d.getHours();
         let min = d.getMinutes();
         let ampm = hour >= 12?"pm":"am";
         document.querySelector(".day").innerHTML = day;
