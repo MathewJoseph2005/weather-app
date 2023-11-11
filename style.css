@@ -93,6 +93,23 @@ body{
     top: -33px;
     left: 345px;
 }
+.search-button{
+    background: transparent;
+    width: 40px;
+    border: none;
+    height: 40px;
+    position: absolute;
+    top: 0px;
+    left: 335px;
+    background:url(search-icon.png);
+    image-orientation:20px ;
+}
+.search-img{
+    width: 30px;
+    position: absolute;
+    top: -4px;
+    left: 335px;
+}
 .text-1{
     color: white;
     position: relative;
@@ -319,4 +336,26 @@ body{
     top:-777px;
     left: 730px;
     flex-shrink: 0;
+} 
+.wind-img{
+    width: 50px;
+    position: absolute;
+    top: 200px;
+    left: 20px;
+}
+.wind-speed{
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    top: 185px;
+    left: 90px;
+}
+.wind-value{
+    font-family: 'Roboto Condensed',sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    position: absolute;
+    top: 215px;
+    left: 90px;
 }
