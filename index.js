@@ -12,6 +12,7 @@ let wheather ={
         const {lon} = data[0];
         this.getWeather(lat,lon);
         this.getsunrisesunset(lat,lon);
+        this.getPlaceName(lat,lon);
     },
     getWeather : function (lat,lon){
         fetch("https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&exclude=&units=metric&appid=a33001df1c319dd29dbb5895c1b60cfe")
@@ -101,7 +102,7 @@ function changeDeg(data){
         document.querySelector(".celsius").innerHTML = feels_like + '\u00B0';
         document.querySelector(".wind-value").innerHTML = speed+ " km/h";
 }
-function getNowplace(lat,lon){
+function nowgetNowplace(lat,lon){
     fetch("https://api.geoapify.com/v1/geocode/reverse?lat="+lat+"&lon="+lon+"&apiKey=0d47df981dc843aaa30cd5fe7adc7f71")
     .then((response) => response.json())
     .then((data) => this.nowPlaceName(data))
