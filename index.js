@@ -55,8 +55,14 @@ document.querySelector(".search").addEventListener("keyup", function (event){
 let d = new Date();
         let dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         let day = dayNames[d.getDay()];
-        let hour = d.getHours();
+        // let hour = d.getHours();
+        let hour = 10;
         let min = d.getMinutes();
         let ampm = hour >= 12?"pm":"am";
         document.querySelector(".day").innerHTML = day;
         document.querySelector(".time").innerHTML = hour + ":" + min +" "+ ampm;
+        if (ampm === "am" && hour >6){
+            let img = document.querySelector(".weather-image");
+            img.src = "morning-icon.png";
+            
+        }
