@@ -281,11 +281,11 @@ body{
     left: 290px;
 }
 .weather-image-day{
-    height: 50px;
+    height: 40px;
     color: aliceblue;
     position: relative;
     top: 70px;
-    left: 10px;
+    left: 13px;
     border-style: none;
     filter: brightness(200);
 }

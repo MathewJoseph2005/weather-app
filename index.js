@@ -23,9 +23,10 @@ let wheather ={
         const {name} = data;
         const {main} = data.weather[0];
         const {speed} = data.wind;
+
         document.querySelector(".text-1").innerHTML = name;
         document.querySelector(".hum-per").innerHTML = humidity + "%";
-        document.querySelector(".celsius").innerHTML = feels_like;
+        document.querySelector(".celsius").innerHTML = feels_like + '\u00B0';
         document.querySelector(".wind-value").innerHTML = speed+ " km/h";
     },
     search: function () {
@@ -39,8 +40,8 @@ let wheather ={
     setsunsrisesunset: function(data){
         const {sunrise} = data.results;
         const {sunset} = data.results;
-        document.querySelector(".time-2").innerHTML = sunset;
-        document.querySelector(".time-3").innerHTML = sunrise;
+        document.querySelector(".time-2").innerHTML = sunset.slice(0,4)+ " pm";
+        document.querySelector(".time-3").innerHTML = sunrise.slice(0,4) + " am";
         
     }
 }
@@ -63,6 +64,6 @@ let d = new Date();
         document.querySelector(".time").innerHTML = hour + ":" + min +" "+ ampm;
         if (ampm === "am" && hour >6){
             let img = document.querySelector(".weather-image");
-            img.src = "morning-icon.png";
-            
+            img.src = "sun-512.png";
+            img.classList.add("weather-image-day");
         }
