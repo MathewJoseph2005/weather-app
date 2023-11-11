@@ -76,16 +76,20 @@ let d = new Date();
             img.src = "sun-512.png";
             img.classList.add("weather-image-day");
         }
+        
+function getplacenonce(){
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-              const latitude = position.coords.latitude;
-              const longitude = position.coords.longitude;
-              getChangeDeg(latitude,longitude)
-              getNowplace(latitude,longitude)
-            });
-          } else {
+        navigator.geolocation.getCurrentPosition(function(position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        getNowplace(lat,lon)
+        getChangeDeg(lat,lon)
+        });
+        } else {
             console.log("Geolocation is not supported by this browser.");
-          }
+            }
+        }       
+        
 function getChangeDeg(lat,lon){
     fetch("https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&exclude=&units=metric&appid=a33001df1c319dd29dbb5895c1b60cfe")
     .then((response) => response.json())
@@ -110,3 +114,4 @@ function nowPlaceName(data){
     const {city} = data.features[0].properties;
     document.querySelector(".text-1").innerHTML = city+','+country;
 }
+getplacenonce()
