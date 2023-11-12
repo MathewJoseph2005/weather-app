@@ -2,7 +2,7 @@ let wheather ={
     apiKey : "a33001df1c319dd29dbb5895c1b60cfe",
     getdatalonlat : function (city){
         fetch(
-            "http://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=5&appid=a33001df1c319dd29dbb5895c1b60cfe"
+            "//api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=5&appid=a33001df1c319dd29dbb5895c1b60cfe"
         )
         .then((response) => response.json())
         .then((data) => this.getLanLon(data))
