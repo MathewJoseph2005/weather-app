@@ -332,8 +332,9 @@ body{
 .weather-image{
     width: 20px;
     position: relative;
-    top: 70px;
+    top: 65px;
     left: 9px;
+    height: 20px;
 }
 .text-1{
     position: relative;
