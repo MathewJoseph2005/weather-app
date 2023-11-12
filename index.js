@@ -71,7 +71,7 @@ let d = new Date();
         let ampm = hour >= 12?"pm":"am";
         document.querySelector(".day").innerHTML = day;
         document.querySelector(".time").innerHTML = hour + ":" + min +" "+ ampm;
-        if (ampm === "am" && hour >6){
+        if (ampm === "am" && hour >6 || ampm === "pm" && hour > 18){
             let img = document.querySelector(".weather-image");
             img.src = "sun-512.png";
             img.classList.add("weather-image-day");
