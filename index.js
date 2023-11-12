@@ -82,6 +82,8 @@ function getplacenonce(){
         navigator.geolocation.getCurrentPosition(function(position) {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
+        nowgetNowplace(lat,lon);
+        getChangeDeg(lat,lon);
         });
         } else {
             console.log("Geolocation is not supported by this browser.");
