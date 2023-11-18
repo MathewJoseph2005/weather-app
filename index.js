@@ -66,7 +66,7 @@ document.querySelector(".search").addEventListener("keyup", function (event){
 let d = new Date();
         let dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         let day = dayNames[d.getDay()];
-         let hour = d.getHours();
+        let hour = d.getHours();
         let min = d.getMinutes();
         let ampm = hour >= 12?"pm":"am";
         document.querySelector(".day").innerHTML = day;
@@ -75,6 +75,10 @@ let d = new Date();
             let img = document.querySelector(".weather-image");
             img.src = "sun-512.png";
             img.classList.add("weather-image-day");
+        }
+        if (hour>6 && hour<18){
+            document.querySelector(".display").style.backgroundImage = "url('Sunrise image.jpg')";
+            document.body.style.background = "#9B144E"
         }
         
 
