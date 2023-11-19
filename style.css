@@ -105,7 +105,8 @@ body{
     top: 0px;
     left: 335px;
     background:url(search-icon.png);
-    background-size: contain;;
+    background-size: contain;
+    cursor:pointer;
 }
 .search-img{
     width: 30px;
