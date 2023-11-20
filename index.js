@@ -76,7 +76,7 @@ let d = new Date();
             img.src = "sun-512.png";
             img.classList.add("weather-image-day");
         }
-        if (hour>6 && hour<18){
+        if (hour>=6 && hour<18){
             document.querySelector(".display").style.backgroundImage = "url('Sunrise image.jpg')";
             document.body.style.background = "#9B144E"
         }
